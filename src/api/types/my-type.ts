@@ -79,7 +79,6 @@ export type ApifoxModel = {
    * 省份编码
    */
   provinceCode?: null | string
-  [property: string]: any
 }
 
 /**

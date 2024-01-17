@@ -5,7 +5,7 @@
       <!-- 未登录 -->
       <navigator
         url="/pages/login/login"
-        v-if="!store.info"
+        v-if="!store.info.avatar"
         open-type="navigate"
         hover-class="navigator-hover"
       >
@@ -42,7 +42,7 @@
       </navigator>
 
       <view class="right">
-        <text>设置</text>
+        <text @click="tosetting">设置</text>
       </view>
     </view>
 
@@ -64,7 +64,16 @@
 
 <script lang="ts" setup>
 import { useUserStore } from '@/stores/user'
+import { onShow } from '@dcloudio/uni-app'
 const store = useUserStore()
+
+const tosetting = () => {
+  uni.navigateTo({
+    url: '/subpkg_my/setting/setting',
+  })
+}
+
+onShow(() => {})
 </script>
 
 <style lang="scss" scoped>
@@ -155,6 +164,7 @@ const store = useUserStore()
       text {
         &:nth-child(2) {
           font-size: 25rpx;
+          color: #999;
         }
       }
     }
